@@ -4,7 +4,8 @@ class GuessingGame
 {
     public $maxGuesses;
     public $secretNumber;
-    public $tryCounter;
+    public $playerNumber;
+    public $tryCounter = 0;
     public $message;
 
 
@@ -25,6 +26,11 @@ class GuessingGame
             $this -> secretNumber = $_SESSION['secretNumber'];
         }
 
+        if(!empty($_SESSION['tryCounter'])){
+            $this -> tryCounter = $_SESSION['tryCounter'];
+        }
+
+
         if(empty($this -> secretNumber)){
             $this -> secretNumber = rand(1, 10);
             $_SESSION['secretNumber'] = $this -> secretNumber;
@@ -32,19 +38,37 @@ class GuessingGame
 
         // --> if not, generate one and store it in the session (so it can be kept when the user submits the form)
         if(!empty($_POST['number'])){
-            if($_POST['number'] == $this -> secretNumber){
-                $this-> playerWins();
-            }
-            else{
-                $this -> playerLoses();
-            }
+            $this -> playerNumber = $_POST['number'];
         }else{
             $this-> message = "Please guess a number!";
         }
 
         if(!empty($_POST['tries'])){
             $this->maxGuesses = $_POST['tries'];
+            $_SESSION['maxGuesses'] = $_POST['tries'];
         }
+
+        if(!empty($_SESSION['maxGuesses'])){
+            $this->maxGuesses = $_SESSION['maxGuesses'];
+        }
+
+        if(isset($_POST['guess'])){
+            $this -> tryCounter ++;
+            $_SESSION['tryCounter'] = $this -> tryCounter;
+            if($this->tryCounter <= $this->maxGuesses){
+                if($this->secretNumber == $this->playerNumber){
+                    $this->playerWins();
+                }
+                else{
+                    $this -> message = "Try again!";
+                }
+            }
+            else{
+                $this->playerLoses();
+            }
+        }
+
+
 
         // --> if so, check if the player won (run the related function) or not (give a hint if the number was higher/lower or run playerLoses if all guesses are used).
         // TODO as an extra: if a reset button was clicked, use the reset function to set up a new game
@@ -53,7 +77,7 @@ class GuessingGame
     public function playerWins()
     {
         // TODO: show a winner message (mention how many tries were needed)
-        $this-> message = "You win!";
+        $this-> message = "You won in {$this ->tryCounter} tries!";
     }
 
     public function playerLoses()

@@ -9,7 +9,6 @@
 </head>
 <body>
     <?php   echo $game->message;
-            echo $game->secretNumber;
     ?>
     <form method="POST" action="">
         <label for="tries">How many times do you want to try?:</label><br>
