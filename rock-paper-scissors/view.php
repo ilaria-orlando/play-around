@@ -17,5 +17,6 @@
             </select><br>
             <button type="submit" name="choose">To battle!</button>
         </form>
+    <?php echo $game -> message ?>
     </body>
 </html>

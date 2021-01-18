@@ -9,6 +9,7 @@ class RockPaperScissors
     public $playerWeapon;
     public $computerWeapon;
     public $randomNumber;
+    public $winOrLose;
     public $message;
 
     public function run()
@@ -17,12 +18,14 @@ class RockPaperScissors
             $this->playerWeapon = $_POST['weapon'];
             $this->randomNumber = rand(1,3);
             $this->Computerweapon();
-            echo $this->playerWeapon . $this->computerWeapon;
+            echo $this->playerWeapon . " " . $this->computerWeapon;
+            $this->winConditions();
+            $this->message = "You chose {$_POST['weapon']} and the computer chose {$this->computerWeapon}<br>{$this->winOrLose}";
         }
     }
 
     public function Computerweapon(){
-        switch ($this -> randomNumber){
+        switch ($this->randomNumber){
             case 1:
                 $this->computerWeapon = "Rock";
                 break;
@@ -35,6 +38,26 @@ class RockPaperScissors
     }
 
     public function winConditions(){
-        if()
+        if($this->playerWeapon == $this->computerWeapon){
+            $this->winOrLose = "it's a tie!";
+        }
+        else if($this->playerWeapon = "Rock" && $this->computerWeapon = "Scissors"){
+            $this ->winOrLose = "You win!";
+        }
+        else if($this->playerWeapon = "Paper" && $this->computerWeapon = "Rock"){
+            $this ->winOrLose = "You win!";
+        }
+        else if($this->playerWeapon = "Scissors" && $this->computerWeapon = "Paper"){
+            $this ->winOrLose = "You win!";
+        }
+        else if($this->playerWeapon = "Rock" && $this->computerWeapon = "Paper"){
+            $this ->winOrLose = "You lose!";
+        }
+        else if($this->playerWeapon = "Paper" && $this->computerWeapon = "Scissors"){
+            $this ->winOrLose = "You lose!";
+        }
+        else if($this->playerWeapon = "Scissors" && $this->computerWeapon = "Rock"){
+            $this ->winOrLose = "You lose!";
+        }
     }
 }
