@@ -1,9 +1,5 @@
 <?php
 
-//TODO: function to save players choice (rock paper scissors)
-//TODO: function that generates random choice for the computer
-//TODO: function that compares player and computer
-//TODO: function with win message and lose message
 class RockPaperScissors
 {
     public $playerWeapon;
@@ -15,12 +11,16 @@ class RockPaperScissors
     public function run()
     {
         if(isset($_POST['choose'])){
+            //check which weapon the player has chosen
             $this->playerWeapon = $_POST['weapon'];
+            //create a random number each time the button is clicked and use a switch case to translate the number into a weapon
             $this->randomNumber = rand(1,3);
             $this->Computerweapon();
-            echo $this->playerWeapon . " " . $this->computerWeapon;
+            //define the message the player will see
+            $this->message = "You chose {$this->playerWeapon} and the computer chose {$this->computerWeapon}<br>";
+            //message will not return player's weapon when defined after the function winConditions, instead sometimes returns an integer
+            //check the winconditions
             $this->winConditions();
-            $this->message = "You chose {$_POST['weapon']} and the computer chose {$this->computerWeapon}<br>{$this->winOrLose}";
         }
     }
 
@@ -60,4 +60,5 @@ class RockPaperScissors
             $this ->winOrLose = "You lose!";
         }
     }
+
 }

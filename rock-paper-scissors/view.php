@@ -8,6 +8,7 @@
         <title>Casino royale - rock, paper, scissors</title>
     </head>
     <body>
+    <div>
         <form method="POST" action="">
             <label for="weapon">Choose your weapon:</label><br>
             <select name="weapon"><br>
@@ -17,6 +18,15 @@
             </select><br>
             <button type="submit" name="choose">To battle!</button>
         </form>
-    <?php echo $game -> message ?>
+        <div>
+            <?php   echo $game->message;
+            echo $game->winOrLose;
+            ?>
+        </div>
+        <div>
+
+        </div>
+    </div>
+
     </body>
 </html>
