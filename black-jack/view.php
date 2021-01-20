@@ -10,6 +10,7 @@
         <h1>Blackjack</h1>
         <form method="post" action="">
             <button type="submit" name="deal">Deal card</button>
+            <button type="submit" name="reset">Reset</button>
         </form>
         <?php echo $game->cardPlayer; ?>
         <?php echo $game->totalPlayer;?>

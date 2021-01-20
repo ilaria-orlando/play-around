@@ -10,7 +10,10 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+require_once "classes/game.php";
 require_once "classes/player.php";
+require_once "classes/computer.php";
+
 
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';
@@ -52,7 +55,7 @@ foreach ($suits as $suit){
 
 echo var_dump($cards);*/
 
-$game = new Player();
+$game = new Game();
 $game -> run();
 
 
