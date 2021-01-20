@@ -13,6 +13,7 @@ error_reporting(E_ALL);
 require_once "classes/game.php";
 require_once "classes/player.php";
 require_once "classes/computer.php";
+require_once "classes/winconditions.php";
 
 
 function whatIsHappening() {

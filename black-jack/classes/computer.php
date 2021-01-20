@@ -4,8 +4,6 @@
 class Computer extends Game
 {
 
-
-
     public function computerCards(){
             $this->sessionSave();
             $this->pullCard();

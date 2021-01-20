@@ -6,13 +6,18 @@
         <title>Blackjack!</title>
     </head>
     <body>
-        <?php echo whatIsHappening(); ?>
+        <?php echo $game->message; ?>
         <h1>Blackjack</h1>
         <form method="post" action="">
             <button type="submit" name="deal">Deal card</button>
             <button type="submit" name="reset">Reset</button>
         </form>
-        <?php echo $game->cardPlayer; ?>
-        <?php echo $game->totalPlayer;?>
+        <div>
+            <p>Your recent card: <?php echo $game->cardPlayer; ?></p>
+            <p>Your total: <?php echo $game->totalPlayer;?></p>
+            <p>Computer's recent card: <?php echo $game->cardComputer; ?></p>
+            <p>Computer's total: <?php echo $game->totalComputer; ?></p>
+
+        </div>
     </body>
 </html>

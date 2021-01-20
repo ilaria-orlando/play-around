@@ -15,19 +15,27 @@ class Game
     public function run(){
         $player = new Player();
         $computer = new Computer();
+        $checkWin = new Winconditions();
         if(isset($_POST['deal'])){
             $player -> playerCards();
             $computer -> computerCards();
+
             //take the player cards and total defined in player class and define them in game class
             $this->cardPlayer = $player->cardPlayer;
             $this->totalPlayer = $player->totalPlayer;
+
             //do the same for computer
-            $this->cardComputer = $player->cardComputer;
-            $this->totalComputer = $player->totalComputer;
+            $this->cardComputer = $computer->cardComputer;
+            $this->totalComputer = $computer->totalComputer;
+
+            //pass the variables totalPlayer and TotalComputer trhough the function so win and lose conditions can be checked
+            $checkWin -> checkWin($this->totalPlayer, $this->totalComputer);
+            $this->message = $checkWin ->message;
         }
 
         $this->reset();
     }
+
 
     //reset the session if reset button is clicked
     public function reset(){
@@ -35,4 +43,6 @@ class Game
             session_destroy();
         }
     }
+
+
 }
