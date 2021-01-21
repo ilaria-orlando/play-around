@@ -1,8 +1,12 @@
 <?php
 
 
-class Computer extends Game
+class Computer
 {
+    public $cardComputer;
+    public $totalComputer;
+
+    public $handComputer = [];
 
     public function computerCards(){
             $this->sessionSave();
@@ -31,6 +35,7 @@ class Computer extends Game
         foreach($this->handComputer as $card){
             $this->totalComputer += $card;
         }
+        return $this->totalComputer;
 
     }
 

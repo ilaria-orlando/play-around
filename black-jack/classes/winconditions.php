@@ -1,7 +1,7 @@
 <?php
 
 
-class Winconditions extends Game
+class Winconditions
 {
     public $message;
 

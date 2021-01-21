@@ -6,7 +6,6 @@
         <title>Blackjack!</title>
     </head>
     <body>
-        <?php echo $game->message; ?>
         <h1>Blackjack</h1>
         <form method="post" action="">
             <button type="submit" name="deal">Deal card</button>
@@ -17,7 +16,7 @@
             <p>Your total: <?php echo $game->totalPlayer;?></p>
             <p>Computer's recent card: <?php echo $game->cardComputer; ?></p>
             <p>Computer's total: <?php echo $game->totalComputer; ?></p>
-
+            <?php echo $game->message; ?>
         </div>
     </body>
 </html>
