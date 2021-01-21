@@ -17,7 +17,7 @@ class Player
 
     public function sessionSave(){
         if(!empty($_SESSION['allValuesPlayer'])){
-            $this->handPlayer = $_SESSION['allValuesPlayer'];
+            $this->allValuesPlayer = $_SESSION['allValuesPlayer'];
         }
     }
 
@@ -36,7 +36,7 @@ class Player
             $this->value = 11;
         }
         else{
-            for($i = 2; $i <= 9; $i++){
+            for($i = 2; $i <= 10; $i++){
                 if(strpbrk($card, "{$i}")){
                     $this->value = $i;
                 }
@@ -49,8 +49,9 @@ class Player
     }
 
     public function totalPlayer(){
-
-        $this->totalPlayer = array_sum($this->allValuesPlayer);
+        foreach($this->allValuesPlayer as $card){
+            $this->totalPlayer += $card;
+        }
         return $this->totalPlayer;
     }
 
